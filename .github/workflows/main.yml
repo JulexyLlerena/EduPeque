@@ -29,6 +29,7 @@ jobs:
         run: |
           mkdir public
           cp -r frontend/. public/
+          find public -type f \( -name '*.html' -o -name '*.css' -o -name '*.js' \) -exec sed -i 's|/assets/|/EduPeque/assets/|g; s|/pages/|/EduPeque/pages/|g' {} +
           touch public/.nojekyll
 
       - name: Subir archivos
