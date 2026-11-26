@@ -3,7 +3,8 @@ name: Publicar EduPeque en GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -18,6 +19,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Descargar repositorio
         uses: actions/checkout@v4
@@ -27,10 +29,51 @@ jobs:
 
       - name: Preparar archivos del frontend
         run: |
-          mkdir public
+          set -e
+
+          mkdir -p public
           cp -r frontend/. public/
-          find public -type f \( -name '*.html' -o -name '*.css' -o -name '*.js' \) -exec sed -i 's|/assets/|/EduPeque/assets/|g; s|/pages/|/EduPeque/pages/|g' {} +
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          base_path = "/EduPeque/"
+          extensions = {".html", ".css", ".js", ".mjs", ".json", ".webmanifest"}
+
+          pattern = re.compile(
+              r'(?<![A-Za-z0-9:/._-])/(assets|pages|index\.html)(?=/|[?#"\'`)\\s]|$)'
+          )
+
+          for file in Path("public").rglob("*"):
+              if file.is_file() and file.suffix.lower() in extensions:
+                  content = file.read_text(encoding="utf-8")
+                  updated = pattern.sub(
+                      lambda match: base_path + match.group(1),
+                      content
+                  )
+
+                  if updated != content:
+                      file.write_text(updated, encoding="utf-8")
+                      print(f"Rutas corregidas: {file}")
+
+          PY
+
           touch public/.nojekyll
+
+      - name: Verificar archivos publicados
+        run: |
+          set -e
+
+          test -f public/index.html
+          test -f public/pages/familia/resumen.html
+          test -f public/pages/dece/seguimiento.html
+
+          echo "Frontend preparado correctamente."
+          echo "Archivos principales encontrados:"
+          ls -la public/
+          ls -la public/pages/familia/
+          ls -la public/pages/dece/
 
       - name: Subir archivos
         uses: actions/upload-pages-artifact@v3
@@ -41,8 +84,10 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
     needs: build
+
     steps:
       - name: Publicar sitio
         id: deployment
