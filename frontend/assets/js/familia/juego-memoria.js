@@ -1,3 +1,5 @@
+import { resolvePath } from '../config.js';
+
 const PAIRS = [
   { id: 1, symbol: '🦊', label: 'Zorrito' },
   { id: 2, symbol: '🌻', label: 'Girasol' },
@@ -80,7 +82,7 @@ function handleFlip(index) {
 
       if (matchedPairIds.size === PAIRS.length) {
         setTimeout(() => {
-          window.location.href = '/pages/familia/juego-resultados.html';
+          window.location.href = resolvePath('/pages/familia/juego-resultados.html');
         }, 500);
       }
     } else {

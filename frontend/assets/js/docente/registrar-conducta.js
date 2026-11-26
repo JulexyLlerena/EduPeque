@@ -1,5 +1,6 @@
 import { apiRequest } from '../api.js';
 import { requireDocenteSession } from '../auth-guard.js';
+import { resolvePath } from '../config.js';
 import {
   clearElement,
   formatDateTimeEs,
@@ -124,7 +125,7 @@ conductaForm.addEventListener('submit', async (event) => {
       })
     });
 
-    window.location.href = `/pages/docente/historial-alumnos.html?alumnoId=${encodeURIComponent(alumnoId)}`;
+    window.location.href = resolvePath(`/pages/docente/historial-alumnos.html?alumnoId=${encodeURIComponent(alumnoId)}`);
   } catch (error) {
     showBanner(conductaAlert, 'error', error.message);
   }

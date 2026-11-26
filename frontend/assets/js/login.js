@@ -1,8 +1,6 @@
-
 import { apiRequest } from './api.js';
+import { resolvePath } from './config.js';
 import { showBanner, hideBanner } from './ui.js';
-
-const BASE_PATH = '/EduPeque';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -28,11 +26,8 @@ function updatePrototypeNotice() {
     prototypeNoticeText.textContent =
       'Módulo Representante en modo prototipo navegable (Etapa 2). Puedes explorar sus vistas sin datos personales reales.';
 
-    prototypePreviewLink.href =
-      `${BASE_PATH}/pages/familia/resumen.html`;
-
-    prototypePreviewLink.textContent =
-      'Explorar prototipo Representante →';
+    prototypePreviewLink.href = resolvePath('/pages/familia/resumen.html');
+    prototypePreviewLink.textContent = 'Explorar prototipo Representante →';
 
   } else if (selectedRole === 'DECE') {
     prototypeNotice.classList.remove('hidden');
@@ -40,11 +35,8 @@ function updatePrototypeNotice() {
     prototypeNoticeText.textContent =
       'Módulo DECE en modo prototipo navegable (Etapa 2). Puedes revisar el panel independiente de seguimiento.';
 
-    prototypePreviewLink.href =
-      `${BASE_PATH}/pages/dece/seguimiento.html`;
-
-    prototypePreviewLink.textContent =
-      'Explorar prototipo DECE →';
+    prototypePreviewLink.href = resolvePath('/pages/dece/seguimiento.html');
+    prototypePreviewLink.textContent = 'Explorar prototipo DECE →';
 
   } else {
     prototypeNotice.classList.add('hidden');
@@ -54,11 +46,8 @@ function updatePrototypeNotice() {
 tabs.forEach((tab) => {
   tab.addEventListener('click', () => {
     tabs.forEach((item) => item.classList.remove('active'));
-
     tab.classList.add('active');
-
     selectedRole = tab.dataset.role || 'DOCENTE';
-
     hideBanner(loginAlert);
     updatePrototypeNotice();
   });
@@ -66,7 +55,6 @@ tabs.forEach((tab) => {
 
 function validateLoginInputs() {
   let valid = true;
-
   const email = correoInput.value.trim();
   const password = passwordInput.value;
 
@@ -107,7 +95,6 @@ passwordInput.addEventListener('input', () => {
 
 forgotPasswordLink.addEventListener('click', (event) => {
   event.preventDefault();
-
   showBanner(
     loginAlert,
     'info',
@@ -117,7 +104,6 @@ forgotPasswordLink.addEventListener('click', (event) => {
 
 loginForm.addEventListener('submit', async (event) => {
   event.preventDefault();
-
   hideBanner(loginAlert);
 
   if (!validateLoginInputs()) {
@@ -136,10 +122,8 @@ loginForm.addEventListener('submit', async (event) => {
     });
 
     if (selectedRole === 'DOCENTE') {
-      window.location.href =
-        `${BASE_PATH}/pages/docente/mi-aula.html`;
+      window.location.href = resolvePath('/pages/docente/mi-aula.html');
     }
-
   } catch (error) {
     showBanner(loginAlert, 'error', error.message);
   }
@@ -148,14 +132,11 @@ loginForm.addEventListener('submit', async (event) => {
 (async () => {
   try {
     const res = await apiRequest('/api/auth/me');
-
     if (res?.data?.user?.rol === 'DOCENTE') {
-      window.location.href =
-        `${BASE_PATH}/pages/docente/mi-aula.html`;
+      window.location.href = resolvePath('/pages/docente/mi-aula.html');
     }
-
   } catch {
-    // Sin sesión activa: permanecer en el formulario.
+    // Sin sesión activa o sin backend disponible en este host
   }
 })();
 

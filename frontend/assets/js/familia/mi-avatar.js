@@ -1,4 +1,5 @@
 import { showBanner } from '../ui.js';
+import { resolvePath } from '../config.js';
 
 const AVATARS = [
   { code: 'menta', label: 'Menta' },
@@ -29,7 +30,7 @@ function renderAvatars() {
     btn.className = `avatar-option${isSelected ? ' selected' : ''}`;
 
     const img = document.createElement('img');
-    img.src = `/assets/img/avatar-${item.code}.svg`;
+    img.src = resolvePath(`/assets/img/avatar-${item.code}.svg`);
     img.alt = item.label;
     img.style.width = '72px';
     img.style.margin = '0 auto 10px';
@@ -52,7 +53,7 @@ function renderAvatars() {
 
     btn.addEventListener('click', () => {
       selectedCode = item.code;
-      currentAvatarImg.src = `/assets/img/avatar-${item.code}.svg`;
+      currentAvatarImg.src = resolvePath(`/assets/img/avatar-${item.code}.svg`);
       renderAvatars();
     });
 

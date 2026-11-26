@@ -1,5 +1,6 @@
 import { apiRequest } from '../api.js';
 import { requireDocenteSession } from '../auth-guard.js';
+import { resolvePath } from '../config.js';
 import {
   clearElement,
   formatDateTimeEs,
@@ -132,7 +133,7 @@ async function loadHistorial() {
     return;
   }
 
-  btnNuevoRegistro.href = `/pages/docente/registrar-conducta.html?alumnoId=${encodeURIComponent(state.alumnoId)}`;
+  btnNuevoRegistro.href = resolvePath(`/pages/docente/registrar-conducta.html?alumnoId=${encodeURIComponent(state.alumnoId)}`);
 
   const params = new URLSearchParams();
   if (state.fechaInicio) {

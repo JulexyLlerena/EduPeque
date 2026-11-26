@@ -32,7 +32,7 @@ function createSessionMiddleware() {
     rolling: true,
     cookie: {
       httpOnly: true,
-      sameSite: 'lax',
+      sameSite: env.nodeEnv === 'production' ? 'none' : 'lax',
       secure: env.nodeEnv === 'production',
       maxAge: env.session.maxAgeMs
     }

@@ -1,3 +1,4 @@
+import { resolvePath } from './config.js';
 import { apiRequest } from './api.js';
 
 export async function requireDocenteSession({ requireAdmin = false } = {}) {
@@ -6,12 +7,12 @@ export async function requireDocenteSession({ requireAdmin = false } = {}) {
     const user = res?.data?.user;
 
     if (!user || user.rol !== 'DOCENTE') {
-      window.location.href = '/index.html';
+      window.location.href = resolvePath('/index.html');
       return null;
     }
 
     if (requireAdmin && !user.esAdministrador) {
-      window.location.href = '/pages/docente/mi-aula.html';
+      window.location.href = resolvePath('/pages/docente/mi-aula.html');
       return null;
     }
 
@@ -36,14 +37,14 @@ export async function requireDocenteSession({ requireAdmin = false } = {}) {
         try {
           await apiRequest('/api/auth/logout', { method: 'POST' });
         } finally {
-          window.location.href = '/index.html';
+          window.location.href = resolvePath('/index.html');
         }
       });
     }
 
     return user;
   } catch {
-    window.location.href = '/index.html';
+    window.location.href = resolvePath('/index.html');
     return null;
   }
 }

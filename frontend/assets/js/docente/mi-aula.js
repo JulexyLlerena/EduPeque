@@ -1,5 +1,6 @@
 import { apiRequest } from '../api.js';
 import { requireDocenteSession } from '../auth-guard.js';
+import { resolvePath } from '../config.js';
 import {
   clearElement,
   formatLongTodayEs,
@@ -57,7 +58,7 @@ function renderAulas(aulas, aulaActiva) {
     let adminAction = null;
     if (state.user?.esAdministrador) {
       adminAction = document.createElement('a');
-      adminAction.href = '/pages/docente/administracion.html';
+      adminAction.href = resolvePath('/pages/docente/administracion.html');
       adminAction.className = 'btn btn-lavender btn-sm';
       adminAction.textContent = 'Ir a Administración para crear o asignar aulas →';
     }
@@ -164,7 +165,7 @@ function renderAlumnos(alumnosData, aulaActiva) {
     badge.textContent = alumno.requiere_seguimiento ? 'Requiere seguimiento' : 'Sin novedades';
 
     const link = document.createElement('a');
-    link.href = `/pages/docente/historial-alumnos.html?alumnoId=${encodeURIComponent(alumno.id)}`;
+    link.href = resolvePath(`/pages/docente/historial-alumnos.html?alumnoId=${encodeURIComponent(alumno.id)}`);
     link.style.fontWeight = '700';
     link.style.fontSize = '0.88rem';
     link.textContent = 'Ver historial →';
@@ -228,7 +229,7 @@ async function loadPanel() {
     if (data.aulaActiva) {
       state.aulaId = data.aulaActiva.id;
       topbarContext.textContent = `Docentes / ${data.aulaActiva.nivel} · ${data.aulaActiva.nombre}`;
-      btnNuevoRegistro.href = `/pages/docente/registrar-conducta.html?aulaId=${encodeURIComponent(data.aulaActiva.id)}`;
+      btnNuevoRegistro.href = resolvePath(`/pages/docente/registrar-conducta.html?aulaId=${encodeURIComponent(data.aulaActiva.id)}`);
     } else {
       topbarContext.textContent = 'Docentes / Sin aulas asignadas';
     }

@@ -1,4 +1,3 @@
-
 name: Publicar EduPeque en GitHub Pages
 
 on:
@@ -34,28 +33,26 @@ jobs:
           mkdir -p public
           cp -r frontend/. public/
 
+          # Adaptar rutas absolutas de recursos HTML al subdirectorio base de GitHub Pages (/EduPeque/)
           python3 - <<'PY'
           from pathlib import Path
           import re
 
           base_path = "/EduPeque/"
-          extensions = {".html", ".css", ".js", ".mjs", ".json", ".webmanifest"}
-
-          pattern = re.compile(
-              r'(?<![A-Za-z0-9:/._-])/(assets|pages|index\.html)(?=/|[?#"\'`)\\s]|$)'
+          # Ajusta atributos HTML (href, src, action) que apunten a /assets/, /pages/ o /index.html
+          html_attr_pattern = re.compile(
+              r'(href|src|action)=(["\'])/(assets|pages|index\.html)([/?#"\'\s]|$)'
           )
 
-          for file in Path("public").rglob("*"):
-              if file.is_file() and file.suffix.lower() in extensions:
-                  content = file.read_text(encoding="utf-8")
-                  updated = pattern.sub(
-                      lambda match: base_path + match.group(1),
-                      content
-                  )
-
-                  if updated != content:
-                      file.write_text(updated, encoding="utf-8")
-                      print(f"Rutas corregidas: {file}")
+          for file in Path("public").rglob("*.html"):
+              content = file.read_text(encoding="utf-8")
+              updated = html_attr_pattern.sub(
+                  lambda m: f'{m.group(1)}={m.group(2)}{base_path}{m.group(3)}{m.group(4)}',
+                  content
+              )
+              if updated != content:
+                  file.write_text(updated, encoding="utf-8")
+                  print(f"Rutas HTML adaptadas: {file}")
 
           PY
 
@@ -66,14 +63,14 @@ jobs:
           set -e
 
           test -f public/index.html
+          test -f public/pages/docente/mi-aula.html
           test -f public/pages/familia/resumen.html
           test -f public/pages/dece/seguimiento.html
+          test -f public/assets/js/config.js
 
-          echo "Frontend preparado correctamente."
-          echo "Archivos principales encontrados:"
-          ls -la public/
-          ls -la public/pages/familia/
-          ls -la public/pages/dece/
+          echo "Frontend preparado correctamente para GitHub Pages."
+          echo "Comprobación de rutas en index.html:"
+          grep -E "(href|src)=" public/index.html | head -n 10
 
       - name: Subir archivos
         uses: actions/upload-pages-artifact@v3

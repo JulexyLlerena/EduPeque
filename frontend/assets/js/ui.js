@@ -1,3 +1,5 @@
+import { resolvePath } from './config.js';
+
 const VALID_AVATARS = new Set([
   'menta',
   'violeta',
@@ -10,7 +12,7 @@ const VALID_AVATARS = new Set([
 
 export function getAvatarPath(codigo) {
   const safeCode = VALID_AVATARS.has(codigo) ? codigo : 'menta';
-  return `/assets/img/avatar-${safeCode}.svg`;
+  return resolvePath(`/assets/img/avatar-${safeCode}.svg`);
 }
 
 export function formatDateTimeEs(dateString) {
