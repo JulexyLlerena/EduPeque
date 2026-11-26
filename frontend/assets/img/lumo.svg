@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 220" fill="none">
+  <!-- Cola de Lumo -->
+  <path d="M148 164C182 162 198 134 186 108C178 92 156 102 152 122C148 138 140 150 148 164Z" fill="#F29F67" stroke="#292644" stroke-width="3"/>
+  <path d="M174 114C184 118 188 130 180 140C172 134 168 124 174 114Z" fill="#FFF7EB"/>
+  <!-- Mochila lila -->
+  <rect x="128" y="106" width="24" height="36" rx="10" fill="#B8A9F0" stroke="#292644" stroke-width="3"/>
+  <!-- Cuerpo -->
+  <ellipse cx="106" cy="148" rx="34" ry="38" fill="#F29F67" stroke="#292644" stroke-width="3"/>
+  <ellipse cx="106" cy="154" rx="20" ry="26" fill="#FFF7EB"/>
+  <!-- Brazo saludando -->
+  <path d="M74 134C56 122 46 106 54 94C60 86 72 92 76 108" fill="#F29F67" stroke="#292644" stroke-width="3" stroke-linecap="round"/>
+  <!-- Brazo derecho -->
+  <path d="M136 136C146 144 146 158 136 162" fill="#F29F67" stroke="#292644" stroke-width="3" stroke-linecap="round"/>
+  <!-- Patitas -->
+  <ellipse cx="90" cy="188" rx="12" ry="8" fill="#F29F67" stroke="#292644" stroke-width="3"/>
+  <ellipse cx="122" cy="188" rx="12" ry="8" fill="#F29F67" stroke="#292644" stroke-width="3"/>
+  <!-- Pañoleta menta -->
+  <path d="M78 120C96 130 116 130 134 120L124 136C110 142 102 142 88 136L78 120Z" fill="#9DE2C4" stroke="#292644" stroke-width="3" stroke-linejoin="round"/>
+  <!-- Orejas -->
+  <path d="M68 62L62 24L96 48Z" fill="#F29F67" stroke="#292644" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M72 56L68 34L88 48Z" fill="#F7C2D0"/>
+  <path d="M144 62L150 24L116 48Z" fill="#F29F67" stroke="#292644" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M140 56L144 34L124 48Z" fill="#F7C2D0"/>
+  <!-- Cabeza -->
+  <ellipse cx="106" cy="82" rx="44" ry="38" fill="#F29F67" stroke="#292644" stroke-width="3"/>
+  <path d="M64 86C74 72 94 76 106 88C118 76 138 72 148 86C146 108 128 120 106 120C84 120 66 108 64 86Z" fill="#FFF7EB"/>
+  <!-- Ojos -->
+  <circle cx="88" cy="78" r="8" fill="#292644"/>
+  <circle cx="124" cy="78" r="8" fill="#292644"/>
+  <circle cx="90" cy="75" r="2.8" fill="#FFFFFF"/>
+  <circle cx="126" cy="75" r="2.8" fill="#FFFFFF"/>
+  <!-- Nariz y sonrisa -->
+  <ellipse cx="106" cy="92" rx="6" ry="4" fill="#292644"/>
+  <path d="M98 100C102 105 110 105 114 100" stroke="#292644" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Mejillas -->
+  <ellipse cx="75" cy="92" rx="6" ry="3.5" fill="#F7A1A1" opacity="0.7"/>
+  <ellipse cx="137" cy="92" rx="6" ry="3.5" fill="#F7A1A1" opacity="0.7"/>
+</svg>

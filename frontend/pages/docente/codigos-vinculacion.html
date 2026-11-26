@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduPeque | Códigos de vinculación familiar</title>
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div>
+        <div class="brand-wordmark">edupeque</div>
+        <div class="sidebar-section-label">ESPACIO DOCENTE</div>
+        <nav class="sidebar-nav">
+          <a href="/pages/docente/mi-aula.html" class="nav-item">Mi aula</a>
+          <a href="/pages/docente/registrar-conducta.html" class="nav-item">Registrar conducta</a>
+          <a href="/pages/docente/historial-alumnos.html" class="nav-item">Historial de alumnos</a>
+          <a href="/pages/docente/codigos-vinculacion.html" class="nav-item active">Códigos familiares</a>
+          <a href="/pages/docente/administracion.html" id="navAdminItem" class="nav-item hidden">
+            Administración
+          </a>
+        </nav>
+      </div>
+      <div class="sidebar-footer">
+        <div>Un espacio para crecer.</div>
+        <a href="/pages/docente/mi-aula.html">Ayuda y acompañamiento</a>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <div class="topbar-breadcrumb">Docentes / Códigos de vinculación familiar</div>
+        <div class="topbar-user" id="topbarUserLabel">Cargando sesión...</div>
+        <div class="topbar-actions">
+          <a href="/pages/docente/mi-aula.html" class="btn btn-lavender btn-sm">← Volver al aula</a>
+          <button type="button" id="btnLogout" class="btn btn-secondary btn-sm">× Cerrar sesión</button>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <div class="page-header-row">
+          <div>
+            <h1 class="page-title">Códigos de vinculación familiar</h1>
+            <p class="page-subtitle">
+              Genera códigos únicos de 8 caracteres para que los representantes se vinculen con sus hijos.
+            </p>
+          </div>
+        </div>
+
+        <div id="codigosAlert" class="alert hidden"></div>
+
+        <div class="two-col-grid" style="grid-template-columns: 1fr 1.6fr;">
+          <!-- Generador de código -->
+          <section class="card">
+            <h2 style="font-size: 1.08rem; font-weight: 800; margin-bottom: 14px;">Generar nuevo código</h2>
+            <form id="generarCodigoForm">
+              <div class="form-group">
+                <label for="alumnoCodigoSelect" class="form-label">Alumno *</label>
+                <select id="alumnoCodigoSelect" class="form-control"></select>
+              </div>
+              <div class="form-group">
+                <label for="diasVigenciaInput" class="form-label">Vigencia (días) *</label>
+                <input
+                  type="number"
+                  id="diasVigenciaInput"
+                  class="form-control"
+                  min="1"
+                  max="90"
+                  value="7"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Generar código de 8 caracteres</button>
+            </form>
+
+            <hr style="border: none; border-top: 1px solid var(--color-border); margin: 22px 0;" />
+
+            <h3 style="font-size: 0.98rem; font-weight: 800; margin-bottom: 10px;">
+              Verificar validez de un código
+            </h3>
+            <form id="validarCodigoForm" style="display: flex; gap: 8px;">
+              <input
+                type="text"
+                id="validarCodigoInput"
+                class="form-control"
+                maxlength="8"
+                placeholder="Ej. EDU8K2P4"
+                style="text-transform: uppercase;"
+              />
+              <button type="submit" class="btn btn-lavender btn-sm">Verificar</button>
+            </form>
+            <div id="validacionResultado" class="alert hidden" style="margin-top: 12px;"></div>
+          </section>
+
+          <!-- Listado de códigos emitidos -->
+          <section class="card">
+            <h2 style="font-size: 1.08rem; font-weight: 800; margin-bottom: 14px;">Códigos generados</h2>
+            <div id="codigosTableContainer"></div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/assets/js/docente/codigos-vinculacion.js"></script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduPeque | El bosque de las parejas</title>
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/infantil.css" />
+</head>
+<body class="kids-shell">
+  <header class="kids-topbar">
+    <a href="/pages/familia/mi-aventura.html" class="kids-pill">← Mi aventura</a>
+    <div style="font-weight: 800; letter-spacing: 0.04em;">EL BOSQUE DE LAS PAREJAS</div>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <span class="kids-pill">Explorador</span>
+      <a href="/pages/familia/mi-aventura.html" class="kids-pill">× Cerrar juego</a>
+    </div>
+  </header>
+
+  <main class="kids-container">
+    <div class="memory-layout">
+      <!-- Tablero de 6 cartas (3 parejas) - Pág. 9 -->
+      <section class="card">
+        <h1 style="font-size: 1.4rem; font-weight: 800; margin-bottom: 4px;">
+          ¡Encuentra a los amigos iguales!
+        </h1>
+        <p class="text-secondary" style="font-size: 0.9rem; margin-bottom: 16px;">
+          Toca dos cartas. ¿Recuerdas dónde está su pareja?
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; text-align: center;">
+          <span class="badge badge-lavender" id="pairBadge1" style="justify-content: center;">Pareja 1</span>
+          <span class="badge badge-lavender" id="pairBadge2" style="justify-content: center;">Pareja 2</span>
+          <span class="badge badge-lavender" id="pairBadge3" style="justify-content: center;">Pareja 3</span>
+        </div>
+
+        <div id="memoryBoard" class="memory-board"></div>
+
+        <p class="text-secondary" style="font-size: 0.84rem; margin-bottom: 0;">
+          Sin reloj y sin perder puntos. ¡Puedes intentarlo otra vez!
+        </p>
+      </section>
+
+      <!-- Panel lateral Lumo (Pág. 9) -->
+      <aside class="lumo-companion-panel">
+        <h2 style="color: var(--color-mint-text); font-size: 1.35rem; font-weight: 800; margin-bottom: 12px;">
+          ¡Yo juego contigo!
+        </h2>
+        <img src="/assets/img/lumo.svg" alt="Lumo" style="width: 150px; margin: 0 auto 14px;" />
+        <div class="card" style="text-align: left; padding: 16px; margin-bottom: 16px;">
+          <div style="font-weight: 800; margin-bottom: 4px;">Soy Lumo, tu compañero</div>
+          <p class="text-secondary" style="font-size: 0.86rem; margin-bottom: 0;">
+            Mira con atención, recuerda y vuelve a probar. ¡Tú puedes!
+          </p>
+        </div>
+        <button type="button" id="btnReiniciarJuego" class="btn btn-secondary btn-block">
+          ↻ Empezar de nuevo
+        </button>
+        <p class="text-secondary" style="font-size: 0.82rem; margin-top: 14px; margin-bottom: 0;">
+          Encuentra las 3 parejas y celebra tu esfuerzo.
+        </p>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Modal Página 12: ¡Probemos otra vez! -->
+  <div id="retryModal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <img src="/assets/img/lumo.svg" alt="Lumo" style="width: 120px; margin: 0 auto 12px;" />
+      <h2 style="font-size: 1.55rem; font-weight: 800; margin-bottom: 8px;">¡Probemos otra vez!</h2>
+      <p class="text-secondary" style="margin-bottom: 20px;">
+        Estas cartas son diferentes. Recuerda dónde estaban y busca su pareja. ¡Lumo confía en ti!
+      </p>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <button type="button" id="btnSeguirJugando" class="btn btn-primary btn-block">Seguir jugando</button>
+        <a href="/pages/familia/mi-aventura.html" class="btn btn-lavender btn-block">
+          Cerrar juego e ir al inicio
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/assets/js/familia/juego-memoria.js"></script>
+</body>
+</html>

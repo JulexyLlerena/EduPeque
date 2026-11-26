@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduPeque | Administración Docente</title>
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div>
+        <div class="brand-wordmark">edupeque</div>
+        <div class="sidebar-section-label">ESPACIO DOCENTE</div>
+        <nav class="sidebar-nav">
+          <a href="/pages/docente/mi-aula.html" class="nav-item">Mi aula</a>
+          <a href="/pages/docente/registrar-conducta.html" class="nav-item">Registrar conducta</a>
+          <a href="/pages/docente/historial-alumnos.html" class="nav-item">Historial de alumnos</a>
+          <a href="/pages/docente/codigos-vinculacion.html" class="nav-item">Códigos familiares</a>
+          <a href="/pages/docente/administracion.html" id="navAdminItem" class="nav-item active">
+            Administración
+          </a>
+        </nav>
+      </div>
+      <div class="sidebar-footer">
+        <div>Permisos administrativos activos.</div>
+        <a href="/pages/docente/mi-aula.html">Volver al panel</a>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <div class="topbar-breadcrumb">Docentes / Administración académica</div>
+        <div class="topbar-user" id="topbarUserLabel">Cargando sesión...</div>
+        <div class="topbar-actions">
+          <a href="/pages/docente/mi-aula.html" class="btn btn-lavender btn-sm">← Volver al aula</a>
+          <button type="button" id="btnLogout" class="btn btn-secondary btn-sm">× Cerrar sesión</button>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <div class="page-header-row">
+          <div>
+            <h1 class="page-title">Gestión académica del centro</h1>
+            <p class="page-subtitle">
+              Administra aulas, docentes, asignaciones y matrículas de alumnos.
+            </p>
+          </div>
+        </div>
+
+        <div id="adminAlert" class="alert hidden"></div>
+
+        <!-- Selector de pestañas -->
+        <div class="segmented-tabs" style="grid-template-columns: repeat(4, 1fr); max-width: 720px;">
+          <button type="button" class="segmented-tab active" data-tab="aulas">Aulas</button>
+          <button type="button" class="segmented-tab" data-tab="docentes">Docentes</button>
+          <button type="button" class="segmented-tab" data-tab="asignaciones">Asignaciones</button>
+          <button type="button" class="segmented-tab" data-tab="alumnos">Alumnos</button>
+        </div>
+
+        <!-- TAB 1: AULAS -->
+        <section id="tab-aulas" class="two-col-grid" style="grid-template-columns: 1fr 1.6fr;">
+          <div class="card">
+            <h2 id="aulaFormTitle" style="font-size: 1.05rem; font-weight: 800; margin-bottom: 14px;">
+              Registrar nueva aula
+            </h2>
+            <form id="aulaForm">
+              <input type="hidden" id="aulaEditId" />
+              <div class="form-group">
+                <label for="aulaNombre" class="form-label">Nombre del aula *</label>
+                <input type="text" id="aulaNombre" class="form-control" placeholder="Ej. Aula Girasoles" required />
+              </div>
+              <div class="form-group">
+                <label for="aulaNivel" class="form-label">Nivel *</label>
+                <input type="text" id="aulaNivel" class="form-control" placeholder="Ej. Inicial 2" required />
+              </div>
+              <div class="form-group">
+                <label for="aulaPeriodo" class="form-label">Periodo lectivo *</label>
+                <input type="text" id="aulaPeriodo" class="form-control" placeholder="Ej. 2026" required />
+              </div>
+              <div class="form-group">
+                <label for="aulaCapacidad" class="form-label">Capacidad (opcional)</label>
+                <input type="number" id="aulaCapacidad" class="form-control" min="1" max="100" />
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <button type="submit" class="btn btn-primary" style="flex: 1;">Guardar aula</button>
+                <button type="button" id="btnCancelAula" class="btn btn-secondary hidden">Cancelar</button>
+              </div>
+            </form>
+          </div>
+          <div class="card">
+            <h2 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 14px;">Aulas registradas</h2>
+            <div id="aulasListContainer"></div>
+          </div>
+        </section>
+
+        <!-- TAB 2: DOCENTES -->
+        <section id="tab-docentes" class="two-col-grid hidden" style="grid-template-columns: 1fr 1.6fr;">
+          <div class="card">
+            <h2 id="docenteFormTitle" style="font-size: 1.05rem; font-weight: 800; margin-bottom: 14px;">
+              Registrar docente
+            </h2>
+            <form id="docenteForm">
+              <input type="hidden" id="docenteEditId" />
+              <div class="form-group">
+                <label for="docenteNombres" class="form-label">Nombres *</label>
+                <input type="text" id="docenteNombres" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="docenteApellidos" class="form-label">Apellidos *</label>
+                <input type="text" id="docenteApellidos" class="form-control" required />
+              </div>
+              <div class="form-group" id="docenteCorreoGroup">
+                <label for="docenteCorreo" class="form-label">Correo electrónico *</label>
+                <input type="email" id="docenteCorreo" class="form-control" required />
+              </div>
+              <div class="form-group" id="docentePasswordGroup">
+                <label for="docentePassword" class="form-label">Contraseña inicial *</label>
+                <input type="password" id="docentePassword" class="form-control" minlength="8" />
+              </div>
+              <div class="form-group">
+                <label for="docenteEspecialidad" class="form-label">Especialidad</label>
+                <input type="text" id="docenteEspecialidad" class="form-control" placeholder="Ej. Educación Inicial" />
+              </div>
+              <div class="form-group" id="docenteAdminGroup">
+                <label style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer;">
+                  <input type="checkbox" id="docenteEsAdmin" />
+                  <span>Conceder permisos de docente administrador</span>
+                </label>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <button type="submit" class="btn btn-primary" style="flex: 1;">Guardar docente</button>
+                <button type="button" id="btnCancelDocente" class="btn btn-secondary hidden">Cancelar</button>
+              </div>
+            </form>
+          </div>
+          <div class="card">
+            <h2 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 14px;">Docentes registrados</h2>
+            <div id="docentesListContainer"></div>
+          </div>
+        </section>
+
+        <!-- TAB 3: ASIGNACIONES -->
+        <section id="tab-asignaciones" class="two-col-grid hidden" style="grid-template-columns: 1fr 1.6fr;">
+          <div class="card">
+            <h2 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 14px;">Asignar docente a aula</h2>
+            <form id="asignacionForm">
+              <div class="form-group">
+                <label for="asigDocenteSelect" class="form-label">Docente *</label>
+                <select id="asigDocenteSelect" class="form-control"></select>
+              </div>
+              <div class="form-group">
+                <label for="asigAulaSelect" class="form-label">Aula *</label>
+                <select id="asigAulaSelect" class="form-control"></select>
+              </div>
+              <div class="form-group">
+                <label style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer;">
+                  <input type="checkbox" id="asigTitular" checked />
+                  <span>Docente titular del aula</span>
+                </label>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Asignar docente</button>
+            </form>
+          </div>
+          <div class="card">
+            <h2 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 14px;">Asignaciones actuales</h2>
+            <div id="asignacionesListContainer"></div>
+          </div>
+        </section>
+
+        <!-- TAB 4: ALUMNOS Y MATRÍCULAS -->
+        <section id="tab-alumnos" class="two-col-grid hidden" style="grid-template-columns: 1fr 1.6fr;">
+          <div class="card">
+            <h2 id="alumnoFormTitle" style="font-size: 1.05rem; font-weight: 800; margin-bottom: 14px;">
+              Registrar alumno
+            </h2>
+            <form id="alumnoForm">
+              <input type="hidden" id="alumnoEditId" />
+              <div class="form-group">
+                <label for="alumnoNombres" class="form-label">Nombres *</label>
+                <input type="text" id="alumnoNombres" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="alumnoApellidos" class="form-label">Apellidos *</label>
+                <input type="text" id="alumnoApellidos" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="alumnoNacimiento" class="form-label">Fecha de nacimiento *</label>
+                <input type="date" id="alumnoNacimiento" class="form-control" required />
+              </div>
+              <div class="form-group">
+                <label for="alumnoAvatar" class="form-label">Avatar inicial</label>
+                <select id="alumnoAvatar" class="form-control">
+                  <option value="menta">Menta</option>
+                  <option value="violeta">Violeta</option>
+                  <option value="sol">Sol</option>
+                  <option value="coral">Coral</option>
+                  <option value="melocoton">Melocotón</option>
+                  <option value="lila">Lila</option>
+                  <option value="cielo">Cielo</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="alumnoAulaSelect" class="form-label">Matricular en aula</label>
+                <select id="alumnoAulaSelect" class="form-control"></select>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <button type="submit" class="btn btn-primary" style="flex: 1;">Guardar alumno</button>
+                <button type="button" id="btnCancelAlumno" class="btn btn-secondary hidden">Cancelar</button>
+              </div>
+            </form>
+          </div>
+          <div class="card">
+            <h2 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 14px;">Alumnos y matrículas</h2>
+            <div id="alumnosListContainer"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/assets/js/docente/administracion.js"></script>
+</body>
+</html>

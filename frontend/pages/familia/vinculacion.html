@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduPeque | Vinculación familiar</title>
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+</head>
+<body>
+  <div class="split-shell">
+    <!-- Columna izquierda (Lavanda - Página 5 del prototipo) -->
+    <aside class="split-hero">
+      <div>
+        <div class="brand-wordmark">edupeque</div>
+        <span class="hero-pill">ESCUELA • FAMILIA • PEQUEÑOS GRANDES LOGROS</span>
+        <h1 class="hero-title">Más cerca de su mundo.</h1>
+        <p class="hero-subtitle">
+          Conecta con su aprendizaje y acompaña cada nuevo logro, también desde casa.
+        </p>
+        <img
+          src="/assets/img/welcome-kids.svg"
+          alt="Ilustración educativa EduPeque"
+          class="hero-illustration"
+        />
+      </div>
+      <div>
+        <p class="hero-footer-title">Aprender. Sentir. Crecer.</p>
+        <p class="hero-footer-sub">Una comunidad que cuida la infancia.</p>
+      </div>
+    </aside>
+
+    <!-- Columna derecha (Página 5 del prototipo) -->
+    <main class="split-form-area">
+      <section class="auth-card">
+        <a href="/index.html" style="font-size: 0.88rem; font-weight: 700;">← Volver al inicio de sesión</a>
+        <h2 style="font-size: 2rem; font-weight: 800; margin: 14px 0 6px;">Un vínculo que nos acerca</h2>
+        <p class="text-secondary" style="margin-bottom: 18px;">
+          Ingresa el código de invitación que recibiste del docente para vincularte con tu hijo.
+        </p>
+
+        <div style="display: flex; gap: 24px; font-size: 0.86rem; font-weight: 700; margin-bottom: 18px;">
+          <span style="color: var(--color-primary);">01 Ingresa tu código</span>
+          <span class="text-secondary">02 Confirma el vínculo</span>
+        </div>
+
+        <form id="vinculacionForm" novalidate>
+          <label class="form-label">Código de invitación</label>
+          <div class="otp-grid" id="otpGrid">
+            <input type="text" maxlength="1" class="otp-cell" aria-label="Carácter 1" />
+            <input type="text" maxlength="1" class="otp-cell" aria-label="Carácter 2" />
+            <input type="text" maxlength="1" class="otp-cell" aria-label="Carácter 3" />
+            <input type="text" maxlength="1" class="otp-cell" aria-label="Carácter 4" />
+            <input type="text" maxlength="1" class="otp-cell" aria-label="Carácter 5" />
+            <input type="text" maxlength="1" class="otp-cell" aria-label="Carácter 6" />
+            <input type="text" maxlength="1" class="otp-cell" aria-label="Carácter 7" />
+            <input type="text" maxlength="1" class="otp-cell" aria-label="Carácter 8" />
+          </div>
+          <p class="text-secondary" style="font-size: 0.8rem; margin-bottom: 14px;">
+            8 caracteres · Revisa las letras y los números.
+          </p>
+
+          <div id="vinculacionFeedback" class="alert hidden"></div>
+
+          <button type="submit" class="btn btn-primary btn-block">Vincular con mi hijo</button>
+        </form>
+
+        <div style="background: var(--color-bg); border-radius: 12px; padding: 16px; margin-top: 20px;">
+          <p style="font-weight: 800; font-size: 0.9rem; margin-bottom: 8px;">¿Dónde encuentro mi código?</p>
+          <ol class="text-secondary" style="margin: 0; padding-left: 18px; font-size: 0.85rem;">
+            <li>Solicítalo al docente de tu hijo.</li>
+            <li>Ingresa los 8 caracteres sin espacios.</li>
+            <li>Verifica los datos y confirma el vínculo.</li>
+          </ol>
+        </div>
+
+        <p class="text-secondary" style="font-size: 0.8rem; margin-top: 16px;">
+          Solo tendrás acceso a la información de tu hijo. (Vista de prototipo — Etapa 2).
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="/assets/js/familia/vinculacion.js"></script>
+</body>
+</html>

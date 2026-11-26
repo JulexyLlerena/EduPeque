@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduPeque | Mi avatar</title>
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/infantil.css" />
+</head>
+<body class="kids-shell">
+  <header class="kids-topbar">
+    <a href="/pages/familia/mi-aventura.html" class="kids-pill">← Mi aventura</a>
+    <div style="font-weight: 800; letter-spacing: 0.04em;">MI AVATAR</div>
+    <a href="/pages/familia/mi-aventura.html" class="kids-pill">× Cerrar</a>
+  </header>
+
+  <main class="kids-container">
+    <section class="student-banner student-banner-lavender" style="padding: 24px 28px;">
+      <div style="display: flex; align-items: center; gap: 18px;">
+        <img id="currentAvatarImg" src="/assets/img/avatar-menta.svg" alt="Avatar actual" class="avatar-circle avatar-lg" />
+        <div>
+          <h1 style="font-size: 1.5rem; font-weight: 800; margin-bottom: 4px;">¡Así soy yo!</h1>
+          <div style="color: var(--color-primary); font-weight: 700; margin-bottom: 4px;">
+            Explorador nivel 1
+          </div>
+          <p class="text-secondary" style="margin-bottom: 0; font-size: 0.9rem;">
+            Elige el avatar que más te guste. Te acompañará en tus juegos y en cada nuevo logro.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 12px;">¿Cuál se parece a ti?</h2>
+      <div id="avatarGrid" class="avatar-grid"></div>
+      <div id="avatarFeedback" class="alert hidden"></div>
+      <button type="button" id="btnGuardarAvatar" class="btn btn-primary btn-block">¡Guardar mi avatar!</button>
+      <p class="text-secondary" style="font-size: 0.84rem; text-align: center; margin-top: 12px; margin-bottom: 0;">
+        Tu nombre y tus logros siguen siendo los mismos. ¡Solo cambia tu estilo!
+      </p>
+    </section>
+  </main>
+
+  <script type="module" src="/assets/js/familia/mi-avatar.js"></script>
+</body>
+</html>

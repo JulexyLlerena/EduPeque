@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 280" fill="none">
+  <rect width="360" height="280" rx="20" fill="#E4DEF9"/>
+  <rect x="44" y="206" width="272" height="36" rx="8" fill="#B5835A"/>
+  <rect x="52" y="200" width="256" height="14" rx="5" fill="#7D5A3C"/>
+  <!-- Niño izquierdo -->
+  <circle cx="116" cy="92" r="26" fill="#F4C7A1"/>
+  <path d="M90 88C90 70 105 60 118 60C132 60 142 70 142 86C132 78 104 78 90 88Z" fill="#5A3E2B"/>
+  <circle cx="108" cy="92" r="3" fill="#292644"/>
+  <circle cx="124" cy="92" r="3" fill="#292644"/>
+  <path d="M111 102C114 106 119 106 122 102" stroke="#292644" stroke-width="2.5" stroke-linecap="round"/>
+  <rect x="92" y="120" width="48" height="52" rx="14" fill="#9CE0C2"/>
+  <rect x="96" y="168" width="40" height="32" rx="8" fill="#F9D776"/>
+  <!-- Regadera -->
+  <rect x="142" y="138" width="32" height="24" rx="6" fill="#F07B5F"/>
+  <path d="M174 146L194 134" stroke="#F07B5F" stroke-width="6" stroke-linecap="round"/>
+  <path d="M188 148C188 156 184 166 184 166M196 150C196 160 192 170 192 170" stroke="#7CC6FE" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="3 4"/>
+  <!-- Planta central -->
+  <rect x="164" y="176" width="36" height="28" rx="6" fill="#D47451"/>
+  <path d="M182 176V154" stroke="#3F9B6D" stroke-width="4" stroke-linecap="round"/>
+  <ellipse cx="172" cy="156" rx="10" ry="6" transform="rotate(-25 172 156)" fill="#58B986"/>
+  <ellipse cx="192" cy="156" rx="10" ry="6" transform="rotate(25 192 156)" fill="#58B986"/>
+  <!-- Niña derecha -->
+  <circle cx="246" cy="92" r="26" fill="#F5CBB0"/>
+  <path d="M218 92C218 70 232 58 246 58C260 58 274 70 274 92C264 78 228 78 218 92Z" fill="#7D4E38"/>
+  <circle cx="220" cy="78" r="9" fill="#7D4E38"/>
+  <circle cx="272" cy="78" r="9" fill="#7D4E38"/>
+  <circle cx="238" cy="92" r="3" fill="#292644"/>
+  <circle cx="254" cy="92" r="3" fill="#292644"/>
+  <path d="M241 102C244 106 249 106 252 102" stroke="#292644" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M222 122C222 118 270 118 270 122L276 184H216L222 122Z" fill="#C4B6F2"/>
+  <!-- Detalles decorativos -->
+  <circle cx="72" cy="212" r="6" fill="#8CD4B0"/>
+  <circle cx="292" cy="212" r="6" fill="#F9D776"/>
+</svg>

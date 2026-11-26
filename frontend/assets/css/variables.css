@@ -1,0 +1,36 @@
+/**
+ * EduPeque - Design Tokens (Identidad Visual)
+ * Valores basados en la paleta de referencia y verificados en el prototipo de 14 páginas.
+ */
+:root {
+  /* Colores principales */
+  --color-primary: #6652B8;
+  --color-primary-hover: #5744A3;
+  --color-lavender: #EFEBFF;
+  --color-mint: #E5F4EC;
+  --color-mint-text: #2E7D5B;
+  --color-yellow: #FFF0D5;
+  --color-yellow-text: #B87D14;
+
+  /* Superficies y texto */
+  --color-bg: #F5F8FC;
+  --color-white: #FFFFFF;
+  --color-text-primary: #292644;
+  --color-text-secondary: #77758A;
+  --color-border: #E5E7F0;
+
+  /* Estados de retroalimentación */
+  --color-error: #D94E4E;
+  --color-error-bg: #FDECEC;
+  --color-overlay: rgba(25, 23, 40, 0.72);
+
+  /* Tipografía */
+  --font-family-base: 'Nunito', 'Quicksand', system-ui, -apple-system, sans-serif;
+
+  /* Bordes y sombras */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+  --shadow-soft: 0 4px 16px rgba(41, 38, 68, 0.06);
+}

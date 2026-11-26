@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduPeque | Mi aula - Espacio Docente</title>
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div>
+        <div class="brand-wordmark">edupeque</div>
+        <div class="sidebar-section-label">ESPACIO DOCENTE</div>
+        <nav class="sidebar-nav">
+          <a href="/pages/docente/mi-aula.html" class="nav-item active">Mi aula</a>
+          <a href="/pages/docente/registrar-conducta.html" class="nav-item">Registrar conducta</a>
+          <a href="/pages/docente/historial-alumnos.html" class="nav-item">Historial de alumnos</a>
+          <a href="/pages/docente/codigos-vinculacion.html" class="nav-item">Códigos familiares</a>
+          <a href="/pages/docente/administracion.html" id="navAdminItem" class="nav-item hidden">
+            Administración
+          </a>
+        </nav>
+      </div>
+      <div class="sidebar-footer">
+        <div>Un espacio para crecer.</div>
+        <a href="/pages/docente/mi-aula.html#ayuda" id="ayudaLink">Ayuda y acompañamiento</a>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <div class="topbar-breadcrumb" id="topbarContext">Docentes / Mi aula</div>
+        <div class="topbar-user" id="topbarUserLabel">Cargando sesión...</div>
+        <div class="topbar-actions">
+          <button type="button" id="btnLogout" class="btn btn-secondary btn-sm">× Cerrar sesión</button>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <div id="panelAlert" class="alert hidden"></div>
+
+        <div class="page-header-row">
+          <div>
+            <h1 class="page-title">Cada día, una oportunidad para crecer</h1>
+            <p class="page-subtitle" id="greetingSubtitle">Cargando información de tu aula...</p>
+          </div>
+          <a href="/pages/docente/registrar-conducta.html" id="btnNuevoRegistro" class="btn btn-primary">
+            + Registrar conducta
+          </a>
+        </div>
+
+        <!-- 3 Tarjetas KPI reales desde MySQL -->
+        <section class="kpi-grid">
+          <div class="kpi-card kpi-lavender">
+            <div class="kpi-value" id="kpiAlumnos">0</div>
+            <div class="kpi-label">Alumnos en el aula</div>
+          </div>
+          <div class="kpi-card kpi-mint">
+            <div class="kpi-value" id="kpiRegistrosHoy">0</div>
+            <div class="kpi-label">Registros de hoy</div>
+          </div>
+          <div class="kpi-card kpi-yellow">
+            <div class="kpi-value" id="kpiSeguimiento">0</div>
+            <div class="kpi-label">En seguimiento</div>
+          </div>
+        </section>
+
+        <!-- Mis aulas -->
+        <section style="margin-bottom: 24px;">
+          <h2 style="font-size: 1.08rem; font-weight: 800; margin-bottom: 12px;">Mis aulas</h2>
+          <div id="aulasContainer" class="aulas-row"></div>
+        </section>
+
+        <!-- Listado de alumnos del aula activa -->
+        <section>
+          <div class="page-header-row" style="margin-bottom: 14px; align-items: center;">
+            <h2 id="alumnosSectionTitle" style="font-size: 1.08rem; font-weight: 800; margin-bottom: 0;">
+              Alumnos del aula
+            </h2>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <input
+                type="search"
+                id="searchAlumnoInput"
+                class="form-control"
+                style="width: 220px;"
+                placeholder="Buscar alumno..."
+              />
+              <select id="filterAlumnoSelect" class="form-control" style="width: 200px;">
+                <option value="todos">Todos los alumnos</option>
+                <option value="sin_novedades">Sin novedades</option>
+                <option value="seguimiento">Requiere seguimiento</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="alumnosContainer"></div>
+
+          <div id="paginationBar" class="pagination-bar hidden">
+            <span id="paginationInfo"></span>
+            <div id="paginationPages" class="pagination-pages"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/assets/js/docente/mi-aula.js"></script>
+</body>
+</html>

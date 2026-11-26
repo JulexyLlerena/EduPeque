@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduPeque | Resumen familiar</title>
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div>
+        <div class="brand-wordmark">edupeque</div>
+        <div class="sidebar-section-label">ESPACIO FAMILIAR</div>
+        <nav class="sidebar-nav">
+          <a href="/pages/familia/resumen.html" class="nav-item active">Resumen de mi hijo</a>
+          <a href="/pages/familia/historial.html" class="nav-item">Historial de conducta</a>
+          <a href="#habitos" class="nav-item">Hábitos en casa</a>
+          <a href="/pages/familia/vinculacion.html" class="nav-item">Vincular otro hijo</a>
+          <a href="/pages/familia/mi-aventura.html" class="nav-item nav-item-highlight">
+            Ir a Mi aventura →
+          </a>
+        </nav>
+      </div>
+      <div class="sidebar-footer">
+        <div>Un espacio para crecer.</div>
+        <a href="/index.html">Volver al inicio</a>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <div class="topbar-breadcrumb">Familias / Resumen</div>
+        <div class="topbar-user">Representante · Vista de prototipo</div>
+        <div class="topbar-actions">
+          <a href="/index.html" class="btn btn-secondary btn-sm">× Cerrar sesión</a>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <div class="alert alert-info">
+          Vista de prototipo del Módulo Familiar (Etapa 2). Los indicadores permanecen en cero hasta habilitar la vinculación de representantes en el backend.
+        </div>
+
+        <div class="page-header-row">
+          <div>
+            <h1 class="page-title">Crecer también empieza en casa</h1>
+            <p class="page-subtitle">Descubre los pequeños grandes avances de tu hijo.</p>
+          </div>
+          <button type="button" class="btn btn-primary" disabled>↓ Descargar reporte</button>
+        </div>
+
+        <div class="student-banner student-banner-lavender">
+          <div style="display: flex; align-items: center; gap: 14px;">
+            <img src="/assets/img/avatar-menta.svg" alt="Avatar" class="avatar-circle" />
+            <div>
+              <div style="font-weight: 800; font-size: 1.08rem;">Sin alumno vinculado todavía</div>
+              <div class="text-secondary" style="font-size: 0.86rem;">
+                Solicita un código de invitación al docente para vincular a tu hijo.
+              </div>
+            </div>
+          </div>
+          <a href="/pages/familia/vinculacion.html" class="btn btn-secondary btn-sm">Vincular código</a>
+        </div>
+
+        <section class="kpi-grid">
+          <div class="kpi-card kpi-lavender">
+            <div class="kpi-value">0,0 / 5</div>
+            <div class="kpi-label">Promedio del periodo</div>
+          </div>
+          <div class="kpi-card kpi-mint">
+            <div class="kpi-value">0</div>
+            <div class="kpi-label">Observaciones compartidas</div>
+          </div>
+          <div class="kpi-card kpi-yellow">
+            <div class="kpi-value">0</div>
+            <div class="kpi-label">Categorías trabajadas</div>
+          </div>
+        </section>
+
+        <div class="two-col-grid" style="margin-bottom: 22px;">
+          <section class="card">
+            <h2 style="font-size: 1.08rem; font-weight: 800; margin-bottom: 6px;">Cada avance cuenta</h2>
+            <p class="text-secondary" style="font-size: 0.86rem;">
+              Puntajes de los últimos registros · Escala de 1 a 5
+            </p>
+            <div class="empty-state" style="padding: 28px 18px;">
+              <h3>Aún no existen registros compartidos</h3>
+              <p>Cuando el docente registre observaciones, verás el gráfico de avances aquí.</p>
+            </div>
+          </section>
+
+          <section class="card" id="habitos">
+            <h2 style="font-size: 1.08rem; font-weight: 800; margin-bottom: 6px;">Pequeños hábitos en casa</h2>
+            <p class="text-secondary" style="font-size: 0.86rem; margin-bottom: 14px;">
+              Conecta lo aprendido con su día a día.
+            </p>
+            <div style="background: var(--color-yellow); border-radius: 12px; padding: 14px; margin-bottom: 12px;">
+              <div style="font-weight: 800; margin-bottom: 4px;">01 Esperar nuestro turno</div>
+              <div class="text-secondary" style="font-size: 0.86rem;">
+                Jueguen por turnos durante 10 minutos y celebren cada espera.
+              </div>
+            </div>
+            <div style="background: var(--color-mint); border-radius: 12px; padding: 14px;">
+              <div style="font-weight: 800; margin-bottom: 4px;">02 Poner nombre a lo que siento</div>
+              <div class="text-secondary" style="font-size: 0.86rem;">
+                Conversen en familia sobre cómo se sintió durante el día.
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <section class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <div>
+            <h3 style="font-size: 1rem; font-weight: 800; margin-bottom: 4px;">Una buena noticia desde el aula</h3>
+            <p class="text-secondary" style="margin-bottom: 0; font-size: 0.9rem;">
+              Aquí aparecerá la observación compartida más reciente de su docente.
+            </p>
+          </div>
+          <a href="/pages/familia/historial.html" style="font-weight: 700;">Ver todo el historial →</a>
+        </section>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

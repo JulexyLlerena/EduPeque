@@ -1,0 +1,31 @@
+{
+  "name": "edupeque-backend",
+  "version": "1.0.0",
+  "description": "Backend API REST para la aplicación educativa EduPeque (Etapa 2: Módulo Docente)",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "db:setup": "node src/scripts/setup-database.js",
+    "db:init-admin": "node src/scripts/init-admin.js",
+    "lint": "cd .. && node backend/node_modules/eslint/bin/eslint.js frontend/assets/js backend/src backend/tests",
+    "test": "node tests/run-tests.js",
+    "test:mysql": "node tests/integration-mysql.test.js"
+  },
+  "private": true,
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2",
+    "express-mysql-session": "^3.0.3",
+    "express-rate-limit": "^7.5.0",
+    "express-session": "^1.18.1",
+    "helmet": "^8.0.0",
+    "mysql2": "^3.12.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "eslint": "^9.20.0",
+    "globals": "^15.15.0"
+  }
+}

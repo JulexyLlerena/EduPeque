@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduPeque | Seguimiento DECE</title>
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div>
+        <div class="brand-wordmark">edupeque</div>
+        <div class="sidebar-section-label">BIENESTAR ESTUDIANTIL</div>
+        <nav class="sidebar-nav">
+          <a href="/pages/dece/seguimiento.html" class="nav-item active">Casos de seguimiento</a>
+          <a href="#observaciones-dece" class="nav-item">Observaciones</a>
+          <a href="#reportes-dece" class="nav-item">Reportes</a>
+        </nav>
+      </div>
+      <div class="sidebar-footer">
+        <div>Un espacio para crecer.</div>
+        <a href="/index.html">Volver al inicio</a>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <div class="topbar-breadcrumb">DECE / Seguimiento</div>
+        <div class="topbar-user">Equipo DECE · Orientación (Prototipo)</div>
+        <div class="topbar-actions">
+          <a href="/index.html" class="btn btn-secondary btn-sm">× Cerrar sesión</a>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <div class="alert alert-info">
+          Panel independiente del Departamento de Consejería Estudiantil (DECE) en modo prototipo (Etapa 2). Las notas internas nunca se comparten con las familias.
+        </div>
+
+        <div class="page-header-row">
+          <div>
+            <h1 class="page-title">Acompañar a tiempo hace la diferencia</h1>
+            <p class="page-subtitle">Consulta los casos del aula y construye un seguimiento en equipo.</p>
+          </div>
+        </div>
+
+        <section class="kpi-grid">
+          <div class="kpi-card kpi-lavender">
+            <div class="kpi-value">0</div>
+            <div class="kpi-label">Casos activos</div>
+          </div>
+          <div class="kpi-card kpi-yellow">
+            <div class="kpi-value">0</div>
+            <div class="kpi-label">Pendiente de revisión</div>
+          </div>
+          <div class="kpi-card kpi-mint">
+            <div class="kpi-value">0</div>
+            <div class="kpi-label">En acompañamiento</div>
+          </div>
+        </section>
+
+        <div class="two-col-grid" style="grid-template-columns: 1.15fr 1fr;">
+          <section class="card">
+            <h2 style="font-size: 1.08rem; font-weight: 800; margin-bottom: 14px;">Casos para seguimiento</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;">
+              <select class="form-control" disabled>
+                <option>Todas las aulas</option>
+              </select>
+              <select class="form-control" disabled>
+                <option>Todos los estados</option>
+              </select>
+            </div>
+            <div class="empty-state">
+              <h3>Sin casos derivados todavía</h3>
+              <p>
+                Cuando un docente marque un registro para seguimiento del DECE, el caso aparecerá en esta lista.
+              </p>
+            </div>
+            <p class="text-secondary" style="font-size: 0.8rem; margin-top: 14px; margin-bottom: 0;">
+              Acceso restringido al equipo de orientación y bienestar.
+            </p>
+          </section>
+
+          <section class="card" id="observaciones-dece">
+            <h2 style="font-size: 1.08rem; font-weight: 800; margin-bottom: 6px;">Detalle del caso</h2>
+            <p class="text-secondary" style="font-size: 0.86rem; margin-bottom: 14px;">
+              Selecciona un caso de la lista para revisar el último registro docente.
+            </p>
+
+            <h3 style="font-size: 0.98rem; font-weight: 800; margin-bottom: 10px;">Observaciones del DECE</h3>
+            <textarea
+              class="form-control"
+              rows="4"
+              placeholder="Escribe una observación o un próximo paso..."
+              disabled
+            ></textarea>
+            <button type="button" class="btn btn-primary btn-block" style="margin-top: 12px;" disabled>
+              Agregar observación
+            </button>
+            <p class="text-secondary" style="font-size: 0.8rem; margin-top: 10px; margin-bottom: 0;">
+              Notas internas. No se comparten con las familias.
+            </p>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

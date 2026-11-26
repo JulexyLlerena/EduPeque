@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduPeque | Ingresa a EduPeque</title>
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+</head>
+<body>
+  <div class="split-shell">
+    <!-- Columna izquierda (Lavanda - Página 1 del prototipo) -->
+    <aside class="split-hero">
+      <div>
+        <div class="brand-wordmark">edupeque</div>
+        <span class="hero-pill">ESCUELA • FAMILIA • PEQUEÑOS GRANDES LOGROS</span>
+        <h1 class="hero-title">Cada pequeño paso cuenta.</h1>
+        <p class="hero-subtitle">
+          Acompañamos sus emociones, celebramos sus logros y crecemos juntos.
+        </p>
+        <img
+          src="/assets/img/welcome-kids.svg"
+          alt="Niños regando una planta en EduPeque"
+          class="hero-illustration"
+        />
+      </div>
+      <div>
+        <p class="hero-footer-title">Aprender. Sentir. Crecer.</p>
+        <p class="hero-footer-sub">Una comunidad que cuida la infancia.</p>
+      </div>
+    </aside>
+
+    <!-- Columna derecha (Formulario unificado - Página 1 del prototipo) -->
+    <main class="split-form-area">
+      <section class="auth-card">
+        <p style="color: var(--color-primary); font-weight: 700; margin-bottom: 6px;">
+          ¡Qué gusto verte de nuevo!
+        </p>
+        <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 6px;">Ingresa a EduPeque</h2>
+        <p class="text-secondary" style="margin-bottom: 22px;">
+          Un mismo lugar para acompañar su desarrollo.
+        </p>
+
+        <div class="segmented-tabs" role="tablist" aria-label="Seleccionar perfil">
+          <button type="button" class="segmented-tab active" data-role="DOCENTE">Docente</button>
+          <button type="button" class="segmented-tab" data-role="REPRESENTANTE">Representante</button>
+          <button type="button" class="segmented-tab" data-role="DECE">DECE</button>
+        </div>
+
+        <div id="loginAlert" class="alert hidden"></div>
+        <div id="prototypeNotice" class="alert alert-info hidden">
+          <p id="prototypeNoticeText" style="margin-bottom: 10px;"></p>
+          <a id="prototypePreviewLink" href="#" class="btn btn-lavender btn-sm">Ver pantallas del prototipo →</a>
+        </div>
+
+        <form id="loginForm" novalidate>
+          <div class="form-group">
+            <label for="correoInput" class="form-label">Correo electrónico</label>
+            <input
+              type="email"
+              id="correoInput"
+              name="correo"
+              class="form-control"
+              placeholder="correo@institucion.edu"
+              autocomplete="email"
+            />
+            <span id="correoError" class="field-error hidden">Ingresa un correo electrónico válido.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="passwordInput" class="form-label">Contraseña</label>
+            <input
+              type="password"
+              id="passwordInput"
+              name="password"
+              class="form-control"
+              placeholder="Escribe tu contraseña"
+              autocomplete="current-password"
+            />
+            <span id="passwordError" class="field-error hidden">La contraseña es obligatoria.</span>
+          </div>
+
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; font-size: 0.88rem;">
+            <label style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer;">
+              <input type="checkbox" id="recordarmeInput" />
+              <span>Recordarme</span>
+            </label>
+            <a href="#recuperar" id="forgotPasswordLink">¿Olvidaste tu contraseña?</a>
+          </div>
+
+          <button type="submit" id="btnIngresar" class="btn btn-primary btn-block">Ingresar</button>
+        </form>
+
+        <div
+          style="background: var(--color-bg); border-radius: 12px; padding: 14px 16px; margin-top: 20px;"
+        >
+          <p style="font-weight: 700; font-size: 0.9rem; margin-bottom: 4px;">
+            ¿Es tu primera vez como representante?
+          </p>
+          <a href="/pages/familia/vinculacion.html" style="font-weight: 700; font-size: 0.88rem;">
+            Vincula a tu hijo con el código de su docente →
+          </a>
+        </div>
+
+        <p class="text-secondary" style="font-size: 0.8rem; margin: 16px 0 12px;">
+          Tus datos y los de tus pequeños están protegidos.
+        </p>
+
+        <a
+          href="/pages/familia/mi-aventura.html"
+          class="btn btn-mint btn-block"
+          title="Acceso al espacio infantil dentro del entorno familiar"
+        >
+          ¡Entrar a mi aventura!
+        </a>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="/assets/js/login.js"></script>
+</body>
+</html>

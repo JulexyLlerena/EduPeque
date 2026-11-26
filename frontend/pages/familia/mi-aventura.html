@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduPeque | Mi aventura</title>
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+  <link rel="stylesheet" href="/assets/css/infantil.css" />
+</head>
+<body class="kids-shell">
+  <header class="kids-topbar">
+    <div class="brand-wordmark">edupeque</div>
+    <nav class="kids-nav-pills">
+      <a href="/pages/familia/mi-aventura.html" class="kids-pill active">Mi aventura</a>
+      <a href="/pages/familia/juego-memoria.html" class="kids-pill">Mis juegos</a>
+      <a href="/pages/familia/mi-avatar.html" class="kids-pill">Mi avatar</a>
+      <a href="/pages/familia/resumen.html" class="kids-pill">× Salir</a>
+    </nav>
+  </header>
+
+  <main class="kids-container">
+    <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 22px;">
+      <div style="display: flex; align-items: center; gap: 14px;">
+        <img src="/assets/img/avatar-menta.svg" alt="Avatar" class="avatar-circle avatar-lg" />
+        <div>
+          <h1 style="font-size: 1.65rem; font-weight: 800; margin-bottom: 2px;">¡Hola, peque!</h1>
+          <p class="text-secondary" style="margin-bottom: 0;">
+            ¿Listo para una nueva aventura? ¡Lumo te está esperando!
+          </p>
+        </div>
+      </div>
+
+      <div style="background: var(--color-yellow); padding: 12px 20px; border-radius: 16px;">
+        <div style="font-weight: 800; color: var(--color-yellow-text);">★ Explorador nivel 1</div>
+        <div class="text-secondary" style="font-size: 0.82rem;">0 puntos de aventura</div>
+      </div>
+    </div>
+
+    <!-- Tarjeta principal de misión con Lumo (Pág. 7) -->
+    <section class="mission-card">
+      <div>
+        <div class="mission-tag">TU MISIÓN DE HOY · CONVIVENCIA</div>
+        <h2 style="font-size: 1.55rem; font-weight: 800; margin-bottom: 8px;">
+          Compartir nos hace un gran equipo
+        </h2>
+        <p class="text-secondary" style="margin-bottom: 18px; max-width: 480px;">
+          Comparte un juguete y espera tu turno. ¡Cada pequeño gesto hace la diferencia!
+        </p>
+        <button type="button" id="btnAbrirMision" class="btn btn-primary">
+          ¡Comenzar mi misión!
+        </button>
+      </div>
+      <img src="/assets/img/lumo.svg" alt="Lumo, la mascota de EduPeque" style="width: 170px;" />
+    </section>
+
+    <div class="kids-grid-2">
+      <!-- Tarjeta Juega con Lumo -->
+      <section class="card">
+        <div style="font-size: 0.74rem; font-weight: 800; letter-spacing: 0.08em; color: var(--color-primary); margin-bottom: 6px;">
+          JUEGA CON LUMO · MEMORIA Y ATENCIÓN
+        </div>
+        <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 6px;">¡Encuentra las parejas!</h3>
+        <p class="text-secondary" style="font-size: 0.9rem;">
+          Toca, descubre y encuentra a los amigos iguales.
+        </p>
+
+        <div class="preview-cards-row">
+          <div class="preview-tile" style="background: var(--color-lavender); color: var(--color-primary);">?</div>
+          <div class="preview-tile" style="background: var(--color-yellow); color: var(--color-yellow-text);">★</div>
+          <div class="preview-tile" style="background: var(--color-mint); color: var(--color-mint-text);">♥</div>
+        </div>
+
+        <a href="/pages/familia/juego-memoria.html" class="btn btn-primary btn-block">¡Vamos a jugar! →</a>
+      </section>
+
+      <!-- Tarjeta Mis superlogros -->
+      <section class="card">
+        <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 4px;">Mis superlogros</h3>
+        <p class="text-secondary" style="font-size: 0.86rem; margin-bottom: 14px;">
+          Tus insignias se desbloquearán mientras completas aventuras.
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <div style="background: var(--color-yellow); padding: 12px 14px; border-radius: 12px;">
+            <div style="font-weight: 800; font-size: 0.9rem;">★ Gran compañero</div>
+            <div class="text-secondary" style="font-size: 0.82rem;">Comparte con tu equipo.</div>
+          </div>
+          <div style="background: var(--color-mint); padding: 12px 14px; border-radius: 12px;">
+            <div style="font-weight: 800; font-size: 0.9rem;">♥ Corazón amable</div>
+            <div class="text-secondary" style="font-size: 0.82rem;">Ayuda a alguien más.</div>
+          </div>
+          <div style="background: var(--color-lavender); padding: 12px 14px; border-radius: 12px;">
+            <div style="font-weight: 800; font-size: 0.9rem;">✓ Tu próximo logro</div>
+            <div class="text-secondary" style="font-size: 0.82rem;">Completa tu misión de hoy.</div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <p class="text-secondary" style="font-size: 0.84rem; margin-top: 20px;">
+      A tu ritmo, sin prisas. Lo importante es descubrir y divertirte.
+    </p>
+  </main>
+
+  <!-- Modal Página 13: ¡Compartamos una aventura! -->
+  <div id="misionModal" class="modal-backdrop hidden" role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <img src="/assets/img/lumo.svg" alt="Lumo" style="width: 125px; margin: 0 auto 12px;" />
+      <h2 style="color: var(--color-mint-text); font-size: 1.45rem; font-weight: 800; margin-bottom: 16px;">
+        ¡Compartamos una aventura!
+      </h2>
+      <ol style="text-align: left; font-size: 1rem; font-weight: 700; display: flex; flex-direction: column; gap: 10px; padding-left: 22px; margin-bottom: 22px;">
+        <li>Busca un juguete que te guste.</li>
+        <li>Invita a alguien a jugar contigo.</li>
+        <li>Jueguen por turnos y escúchense.</li>
+      </ol>
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <button type="button" id="btnAceptarMision" class="btn btn-primary btn-block">¡Voy a intentarlo!</button>
+        <button type="button" id="btnCerrarMision" class="btn btn-lavender btn-block">× Volver a mi aventura</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/assets/js/familia/mi-aventura.js"></script>
+</body>
+</html>

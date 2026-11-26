@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduPeque | Registrar una conducta</title>
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div>
+        <div class="brand-wordmark">edupeque</div>
+        <div class="sidebar-section-label">ESPACIO DOCENTE</div>
+        <nav class="sidebar-nav">
+          <a href="/pages/docente/mi-aula.html" class="nav-item">Mi aula</a>
+          <a href="/pages/docente/registrar-conducta.html" class="nav-item active">Registrar conducta</a>
+          <a href="/pages/docente/historial-alumnos.html" class="nav-item">Historial de alumnos</a>
+          <a href="/pages/docente/codigos-vinculacion.html" class="nav-item">Códigos familiares</a>
+          <a href="/pages/docente/administracion.html" id="navAdminItem" class="nav-item hidden">
+            Administración
+          </a>
+        </nav>
+      </div>
+      <div class="sidebar-footer">
+        <div>Un espacio para crecer.</div>
+        <a href="/pages/docente/mi-aula.html">Ayuda y acompañamiento</a>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <div class="topbar-breadcrumb" id="topbarContext">Docentes / Registrar conducta</div>
+        <div class="topbar-user" id="topbarUserLabel">Cargando sesión...</div>
+        <div class="topbar-actions">
+          <a href="/pages/docente/mi-aula.html" class="btn btn-lavender btn-sm">← Volver al aula</a>
+          <button type="button" id="btnLogout" class="btn btn-secondary btn-sm">× Cerrar sesión</button>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <div class="page-header-row">
+          <div>
+            <h1 class="page-title">Registrar una conducta</h1>
+            <p class="page-subtitle">Observa con atención. Acompaña con intención.</p>
+          </div>
+        </div>
+
+        <div id="conductaAlert" class="alert hidden"></div>
+
+        <!-- Selector de alumno + tarjeta de contexto (Pág. 3) -->
+        <div class="student-banner">
+          <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+            <img id="studentAvatar" src="/assets/img/avatar-menta.svg" alt="Avatar alumno" class="avatar-circle" />
+            <div>
+              <label for="alumnoSelect" class="form-label" style="margin-bottom: 4px;">Alumno seleccionado</label>
+              <select id="alumnoSelect" class="form-control" style="min-width: 260px;"></select>
+            </div>
+            <div id="studentMetaText" class="text-secondary" style="font-size: 0.88rem;"></div>
+          </div>
+          <span id="studentBadge" class="badge badge-mint hidden">Sin novedades</span>
+        </div>
+
+        <div class="two-col-grid">
+          <!-- Formulario Nuevo registro -->
+          <section class="card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+              <h2 style="font-size: 1.1rem; font-weight: 800; margin-bottom: 0;">Nuevo registro</h2>
+              <span id="currentTimestampLabel" class="text-secondary" style="font-size: 0.84rem;"></span>
+            </div>
+
+            <form id="conductaForm" novalidate>
+              <div class="form-group">
+                <label class="form-label">Categoría de conducta *</label>
+                <div id="categoriasGroup" class="pill-options"></div>
+                <span id="categoriaError" class="field-error hidden">Selecciona una categoría.</span>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Puntaje de la observación *</label>
+                <div id="puntajeGroup" class="score-scale">
+                  <button type="button" class="score-btn" data-score="1">1</button>
+                  <button type="button" class="score-btn" data-score="2">2</button>
+                  <button type="button" class="score-btn" data-score="3">3</button>
+                  <button type="button" class="score-btn" data-score="4">4</button>
+                  <button type="button" class="score-btn" data-score="5">5</button>
+                </div>
+                <div class="score-legend">
+                  <span>1 · Necesita apoyo</span>
+                  <span>5 · Lo logra con autonomía</span>
+                </div>
+                <span id="puntajeError" class="field-error hidden">Selecciona un puntaje del 1 al 5.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="observacionInput" class="form-label">¿Qué observaste?</label>
+                <textarea
+                  id="observacionInput"
+                  class="form-control"
+                  rows="4"
+                  maxlength="500"
+                  placeholder="Describe lo ocurrido de manera objetiva..."
+                ></textarea>
+                <div style="display: flex; justify-content: space-between; margin-top: 6px;">
+                  <span id="observacionError" class="field-error hidden">Escribe entre 5 y 500 caracteres.</span>
+                  <span id="charCounter" class="text-secondary" style="font-size: 0.8rem; margin-left: auto;">
+                    0 / 500 caracteres
+                  </span>
+                </div>
+              </div>
+
+              <label class="dece-check-box" style="cursor: pointer;">
+                <input type="checkbox" id="deceCheckbox" />
+                <span>Marcar para seguimiento del DECE</span>
+              </label>
+
+              <div style="display: grid; grid-template-columns: 1fr 1.6fr; gap: 12px;">
+                <a href="/pages/docente/mi-aula.html" class="btn btn-secondary">Cancelar</a>
+                <button type="submit" id="btnGuardarConducta" class="btn btn-primary">Guardar registro</button>
+              </div>
+            </form>
+          </section>
+
+          <!-- Guía metodológica derecha (Pág. 3) -->
+          <div style="display: flex; flex-direction: column; gap: 18px;">
+            <section class="card" style="background: var(--color-lavender); border: none;">
+              <h3 style="font-size: 1.05rem; font-weight: 800; margin-bottom: 8px;">
+                Pequeñas acciones, grandes avances
+              </h3>
+              <p class="text-secondary" style="font-size: 0.9rem; margin-bottom: 14px;">
+                Registra hechos concretos y reconoce el esfuerzo, no solo el resultado.
+              </p>
+              <div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.9rem; font-weight: 700;">
+                <div><span style="color: var(--color-primary);">01</span> Describe lo ocurrido</div>
+                <div><span style="color: var(--color-primary);">02</span> Evita etiquetas y comparaciones</div>
+                <div><span style="color: var(--color-primary);">03</span> Propón un siguiente paso</div>
+              </div>
+            </section>
+
+            <section class="card">
+              <h3 style="font-size: 1rem; font-weight: 800; margin-bottom: 8px;">Acompañamiento oportuno</h3>
+              <p class="text-secondary" style="font-size: 0.88rem; margin-bottom: 10px;">
+                Al marcar el registro, el equipo DECE podrá revisar el caso y agregar observaciones.
+              </p>
+              <p class="text-secondary" style="font-size: 0.88rem; margin-bottom: 0;">
+                La familia recibe el resumen de conducta, no las notas internas del DECE.
+              </p>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/assets/js/docente/registrar-conducta.js"></script>
+</body>
+</html>

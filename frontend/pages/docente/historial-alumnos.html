@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduPeque | Historial individual de conducta</title>
+  <link rel="stylesheet" href="/assets/css/base.css" />
+  <link rel="stylesheet" href="/assets/css/layout.css" />
+  <link rel="stylesheet" href="/assets/css/components.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div>
+        <div class="brand-wordmark">edupeque</div>
+        <div class="sidebar-section-label">ESPACIO DOCENTE</div>
+        <nav class="sidebar-nav">
+          <a href="/pages/docente/mi-aula.html" class="nav-item">Mi aula</a>
+          <a href="/pages/docente/registrar-conducta.html" class="nav-item">Registrar conducta</a>
+          <a href="/pages/docente/historial-alumnos.html" class="nav-item active">Historial de alumnos</a>
+          <a href="/pages/docente/codigos-vinculacion.html" class="nav-item">Códigos familiares</a>
+          <a href="/pages/docente/administracion.html" id="navAdminItem" class="nav-item hidden">
+            Administración
+          </a>
+        </nav>
+      </div>
+      <div class="sidebar-footer">
+        <div>Un espacio para crecer.</div>
+        <a href="/pages/docente/mi-aula.html">Ayuda y acompañamiento</a>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <div class="topbar-breadcrumb" id="topbarContext">Docentes / Historial de alumnos</div>
+        <div class="topbar-user" id="topbarUserLabel">Cargando sesión...</div>
+        <div class="topbar-actions">
+          <a href="/pages/docente/mi-aula.html" class="btn btn-lavender btn-sm">← Volver al aula</a>
+          <button type="button" id="btnLogout" class="btn btn-secondary btn-sm">× Cerrar sesión</button>
+        </div>
+      </header>
+
+      <main class="page-content">
+        <div class="page-header-row">
+          <div>
+            <h1 class="page-title">Su historia, paso a paso</h1>
+            <p class="page-subtitle">Consulta las observaciones y descubre cómo acompañar su desarrollo.</p>
+          </div>
+          <a href="/pages/docente/registrar-conducta.html" id="btnNuevoRegistro" class="btn btn-primary">
+            + Nuevo registro
+          </a>
+        </div>
+
+        <div id="historialAlert" class="alert hidden"></div>
+
+        <!-- Selector y tarjeta del alumno (Pág. 4) -->
+        <div class="student-banner">
+          <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+            <img id="studentAvatar" src="/assets/img/avatar-menta.svg" alt="Avatar" class="avatar-circle" />
+            <div>
+              <label for="alumnoSelect" class="form-label" style="margin-bottom: 4px;">Alumno</label>
+              <select id="alumnoSelect" class="form-control" style="min-width: 260px;"></select>
+            </div>
+            <div id="studentMeta" class="text-secondary" style="font-size: 0.88rem;"></div>
+          </div>
+          <span id="studentStatusBadge" class="badge badge-mint hidden">Sin novedades</span>
+        </div>
+
+        <!-- 3 Tarjetas KPI reales -->
+        <section class="kpi-grid">
+          <div class="kpi-card kpi-lavender">
+            <div class="kpi-value" id="kpiTotal">0</div>
+            <div class="kpi-label">Registros totales</div>
+          </div>
+          <div class="kpi-card kpi-mint">
+            <div class="kpi-value" id="kpiPromedio">0,0 / 5</div>
+            <div class="kpi-label">Promedio del periodo</div>
+          </div>
+          <div class="kpi-card kpi-yellow">
+            <div class="kpi-value" id="kpiSeguimiento">0</div>
+            <div class="kpi-label">Registros con seguimiento</div>
+          </div>
+        </section>
+
+        <!-- Barra de filtros y tabla de historial -->
+        <section class="card">
+          <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 18px;">
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <div>
+                <label for="fechaInicioInput" class="form-label">Desde</label>
+                <input type="date" id="fechaInicioInput" class="form-control" />
+              </div>
+              <div>
+                <label for="fechaFinInput" class="form-label">Hasta</label>
+                <input type="date" id="fechaFinInput" class="form-control" />
+              </div>
+              <div>
+                <label for="categoriaFilterSelect" class="form-label">Categoría</label>
+                <select id="categoriaFilterSelect" class="form-control" style="min-width: 190px;">
+                  <option value="">Todas las categorías</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" id="btnLimpiarFiltros" class="btn btn-secondary btn-sm">
+              Limpiar filtros
+            </button>
+          </div>
+
+          <div id="historialTableContainer"></div>
+
+          <div id="paginationBar" class="pagination-bar hidden">
+            <span id="paginationInfo"></span>
+            <div id="paginationPages" class="pagination-pages"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script type="module" src="/assets/js/docente/historial-alumnos.js"></script>
+</body>
+</html>
