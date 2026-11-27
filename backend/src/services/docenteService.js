@@ -70,7 +70,7 @@ async function getPanelData(user, query = {}) {
   const search = normalizeText(query.search || '');
   const allowedFilters = ['todos', 'seguimiento', 'sin_novedades'];
   const filtro = allowedFilters.includes(query.filtro) ? query.filtro : 'todos';
-  const page = parsePositiveInt(query.page) || 1;
+  const page = Math.min(parsePositiveInt(query.page) || 1, 100);
   const pageSize = 6;
 
   const [kpis, alumnosResult] = await Promise.all([
@@ -144,7 +144,13 @@ async function crearRegistroConducta(user, payload) {
   const categoriaId = parsePositiveInt(payload.categoriaId);
   const puntaje = Number(payload.puntaje);
   const observacion = normalizeText(payload.observacion);
-  const requiereSeguimientoDece = Boolean(payload.requiereSeguimientoDece);
+  const requiereSeguimientoDece = payload.requiereSeguimientoDece ?? false;
+  if (typeof requiereSeguimientoDece !== 'boolean') {
+    throw new AppError(
+      400,
+      'El indicador de seguimiento DECE debe ser booleano.'
+    );
+  }
 
   if (!alumnoId) {
     throw new AppError(400, 'Debes seleccionar un alumno válido.');
@@ -191,8 +197,8 @@ function parseHistorialFilters(query = {}) {
   const fechaInicio = query.fechaInicio ? normalizeText(query.fechaInicio) : null;
   const fechaFin = query.fechaFin ? normalizeText(query.fechaFin) : null;
   const categoriaId = query.categoriaId ? parsePositiveInt(query.categoriaId) : null;
-  const page = parsePositiveInt(query.page) || 1;
-
+  const page = Math.min(parsePositiveInt(query.page) || 1, 100);
+  
   if (fechaInicio && !isValidDateString(fechaInicio)) {
     throw new AppError(400, 'La fecha de inicio debe tener formato YYYY-MM-DD.');
   }
