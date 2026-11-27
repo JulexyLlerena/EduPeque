@@ -5,7 +5,7 @@ let pool = null;
 
 function getPool() {
   if (!pool) {
-    pool = mysql.createPool({
+    const poolConfig = {
       host: env.db.host,
       port: env.db.port,
       user: env.db.user,
@@ -16,7 +16,13 @@ function getPool() {
       queueLimit: 0,
       charset: 'utf8mb4',
       timezone: 'local'
-    });
+    };
+
+    if (env.nodeEnv === 'production') {
+      poolConfig.ssl = {};
+    }
+
+    pool = mysql.createPool(poolConfig);
   }
   return pool;
 }
